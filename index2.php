@@ -1,13 +1,8 @@
 <?php
+include_once ('include/db_connect.php');
+include_once ('classes/countable.php');
 
-//connection to database
-include ('db_connect.php');
-//querying the database
-$query = $db->prepare("SELECT post_id, title, content, author FROM post");
-$query->execute();
-$query->bind_result($post_id, $title, $body, $author);
 ?>
-
 <DoCTYPE html>
 <html>
    <head>
@@ -17,15 +12,24 @@ $query->bind_result($post_id, $title, $body, $author);
    <body>
     <!--displaying the results of the above query on the Home page.-->
      <div id='container'>
-       <?php
-       while($query->fetch()):
-          ?>
+     <h3> My Home Page. </h3>
           <article>
-            <h2><?php echo $title?></h2>
-            <p><?php echo $body?></p>
-            <p><strong>Author: <?php echo  $author?></strong></p>
+            <h2><?php
+            $obj2 = new Posts;
+            echo $obj2->show_title();
+           ?></h2>
+
+           <p>
+             <?php
+             $obj2 = new Posts;
+             echo $obj2->show_content();
+             echo "<br><br>";
+              $obj3 = new Posts;
+             echo $obj3->show_author();
+            ?>
+           </p>
+
           </article>
-        <?php endwhile?>
 
      </div>
 
