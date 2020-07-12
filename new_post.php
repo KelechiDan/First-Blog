@@ -1,39 +1,15 @@
 <?php
-//starting a session
-session_start();
-//include database connection
-include ('db_connect.php');
-if (!isset($_SESSION["user_id"])){
-  header('Location: login.php');
-  exit();
-}
- //checking if submit botton has been klicked
-if (isset($_POST["submit"])){
-    //getting and vallidating data from form
-    $title = $_POST["title"];
-    $body = $_POST["body"];
-    $author = $_POST["author"];
+require_once realpath("vendor/autoload.php");
+use MyBlog\classes\Post_Submit;
+use MyBlog\includes\Dbh;
 
-    $title = $db->real_escape_string($title);
-    $body = $db->real_escape_string($body);
-    $author = $db->real_escape_string($author);
-    $user_id = $_SESSION["user_id"];
-    $date = date("Y/m/d h:i:sa");
-    $body = htmlentities($body);
-    if ($title && $body && $author){
-      $query = $db->query("INSERT INTO post (user_id, title, content, posted, author)
-       VALUES ('$user_id', '$title', '$body', '$date', '$author')");
-       if ($query){
-         echo "Post added.";
-       } else {
-         echo "error";
-       }
+ //include_once ('include/db_connect.php');
+ //include_once ('classes/post_submit.php');//starting a session
+//session_start();
 
-    } else {
-      echo "Missing data.";
-    }
+$obj3 = new Post_Submit(new Dbh);
+$obj3->submitPost();
 
-}
 ?>
 
 

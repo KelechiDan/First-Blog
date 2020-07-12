@@ -1,14 +1,27 @@
 <?php
-//starting a session
-session_start();
-if (!isset($_SESSION['user_id'])){
-  header('Location: login.php');
-  exit();
-}
+require_once realpath("vendor/autoload.php");
+use MyBlog\classes\Posts;
+use MyBlog\includes\Dbh;
+
+//include_once ('classes/countable.php')
+ //include_once ('include/db_connect.php');
+ //include_once ('classes/countable.php');//starting a session
+
+
+
+//session_start();
+//if (isset($_SESSION['user_id'])){
+//  header('Location: login.php');
+  //exit();
+
+//}
+
+//$obj2 = new Count_1();
+//$obj2->postCount();
 //including database connection
-include ("db_connect.php");
+
 //post Countable
-$post_count = $db->query("SELECT * FROM post");
+//$post_count = $db->query("SELECT * FROM post");
 
 ?>
 
@@ -34,8 +47,14 @@ $post_count = $db->query("SELECT * FROM post");
      <!--output total blog posts posted-->
      <div id= "mainContent">
          <tr>
-           <td>Total Blog Post</td>
-           <td><?php echo $post_count->num_rows?></td>
+           <td>Total Blog Post: </td>
+           <td><?php
+
+             $obj = new Posts(new Dbh);
+             echo $obj->postCount();
+
+           ?></td>
+
          </tr>
 
      </div>
