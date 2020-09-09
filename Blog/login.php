@@ -1,6 +1,6 @@
 <?php
 require_once realpath("vendor/autoload.php");
-use MyBlog\classes\Validatn;
+use MyBlog\classes\Validation;
 use MyBlog\includes\Dbh;
 
 //session_start();
@@ -16,8 +16,8 @@ if (isset($_POST["submit"])){
   $user = $_POST["username"];
   $pwrd = $_POST["password"];
 
-  $obj = new Validatn(new Dbh);
-  $obj->validate_login($user, $pwrd);
+  $obj = new Validation(new Dbh);
+  $obj->validateLogin($user, $pwrd);
 
 }
 ?>

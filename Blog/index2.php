@@ -1,6 +1,6 @@
 <?php
 require_once realpath("vendor/autoload.php");
-use MyBlog\classes\Posts;
+use MyBlog\classes\Post;
 use MyBlog\includes\Dbh;
 
 //include_once ('include/db_connect.php');
@@ -19,17 +19,17 @@ use MyBlog\includes\Dbh;
      <h3> My Home Page. </h3>
           <article>
             <h2><?php
-            $obj1 = new Posts(new Dbh);
-            echo $obj1->show_title();
+            $obj1 = new Post(new Dbh);
+            echo $obj1->showTitle();
            ?></h2>
 
            <p>
              <?php
-             $obj2 = new Posts(new Dbh);
-             echo $obj2->show_content();
+             $obj2 = new Post(new Dbh);
+             echo $obj2->showContent();
              echo "<br><br>";
-              $obj3 = new Posts(new Dbh);
-             echo $obj3->show_author();
+              $obj3 = new Post(new Dbh);
+             echo $obj3->showAuthor();
             ?>
            </p>
 

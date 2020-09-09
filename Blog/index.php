@@ -1,6 +1,6 @@
 <?php
 require_once realpath("vendor/autoload.php");
-use MyBlog\classes\Posts;
+use MyBlog\classes\Post;
 use MyBlog\includes\Dbh;
 
 //include_once ('classes/countable.php')
@@ -50,7 +50,7 @@ use MyBlog\includes\Dbh;
            <td>Total Blog Post: </td>
            <td><?php
 
-             $obj = new Posts(new Dbh);
+             $obj = new Post(new Dbh);
              echo $obj->postCount();
 
            ?></td>

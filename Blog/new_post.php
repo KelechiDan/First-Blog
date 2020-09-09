@@ -1,13 +1,13 @@
 <?php
 require_once realpath("vendor/autoload.php");
-use MyBlog\classes\Post_Submit;
+use MyBlog\classes\PostSubmit;
 use MyBlog\includes\Dbh;
 
  //include_once ('include/db_connect.php');
  //include_once ('classes/post_submit.php');//starting a session
 //session_start();
 
-$obj3 = new Post_Submit(new Dbh);
+$obj3 = new PostSubmit(new Dbh);
 $obj3->submitPost();
 
 ?>
