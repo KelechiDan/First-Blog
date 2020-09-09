@@ -1,0 +1,11 @@
+{
+
+"autoload": {
+  "psr-4": {
+    "MyBlog\\": "src/"
+  }
+},
+  "require": {
+    "ext-pdo": "*"
+  }
+}
